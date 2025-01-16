@@ -11,6 +11,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "randomcolor": "^0.6.2",
     "section03": "file:"
   }
 }
