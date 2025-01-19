@@ -1,10 +1,20 @@
 const Button = ({text, color, children}) => {
+    // 이벤트 객체
+    const onClickButton = (e) => {
+        console.log(e);
+        console.log(text);
+    };
+
     return (
-    <button style={{color: color}}>
-        {text} - {color}
-        {/* 값이 전달이 안될 경우, 아래는 오류가 뜸 */}
-        {text} - {color.toUpperCase()}
-        {children}
+    <button 
+        // 이벤트 핸들러
+        onClick={onClickButton}
+        // onMouseEnter={onClickButton}
+        style={{color: color}}>
+            {text} - {color}
+            {/* 값이 전달이 안될 경우, 아래는 오류가 뜸 */}
+            {text} - {color.toUpperCase()}
+            {children}
     </button>
     );
 };
