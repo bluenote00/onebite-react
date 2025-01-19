@@ -1,6 +1,3 @@
-import './App.css'
-import './components/Bulb'
-import './components/Light'
 import { useState } from "react"
 
 const Bulb = () => {
@@ -26,28 +23,4 @@ const Bulb = () => {
   );
 }
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
- return (
-  <div>
-      <h1>{count}</h1>
-      <button 
-        onClick={() => {
-          setCount(count + 1);
-        }}>+
-        </button>
-    </div>
-)}
-
-// App 컴포넌트
-function App() {  
- 
-  return (
-    <>
-      <Bulb />
-      <Counter />
-    </>
-  );
-};
-
-export default App;
+export default Bulb;
