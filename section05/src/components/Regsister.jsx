@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 // 간단한 회원가입 폼
 // 1. 이름
@@ -14,7 +14,17 @@ const Resister = () => {
     bio: "" ,
   });
 
+  const countRef = useRef(0);
+  const inputRef = useRef();
+
+  // count가 아무리 호출되도 0에서 리셋되고 시작함
+  let count = 0;
+
   const onChange = (e) => {
+    // CountRef.current ++;
+    count++;
+    console.log(count);
+
     setInput({
       ...input,
       // 프로퍼티 키 설정 : input 태그의 name 값을 따라가겠다!
@@ -22,10 +32,19 @@ const Resister = () => {
     })
   }
 
+  const onsubmit = () => {
+    if(input.name === "") {
+      // 이름을 입력하는 DOM 요소 포커스
+      console.log(inputRef.current)
+      inputRef.current.focus();
+    }
+  };
+
   return (
     <div>
       <div>
         <input 
+          ref={inputRef}
           name="name"
           value={input.name} 
           onChange={onChange} 
@@ -63,6 +82,7 @@ const Resister = () => {
         />
         {input.bio}
       </div>
+      <button onClick={onsubmit}>제출</button>
     </div>
   )
 }
