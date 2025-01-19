@@ -7,62 +7,61 @@ import { useState } from "react";
 // 4. 자기소개
 
 const Resister = () => {
-  const [name, setName] = useState("이름");
-  const [birth, setBirth] = useState("");
-  const [country, setCountry] = useState("");
-  const [bio, setBio] = useState("");
+  const [input, setInput] = useState({
+    name : "",
+    birth : "",
+    country : "",
+    bio: "" ,
+  });
 
-  const onChangeName = (e) => {
-    setName(e.target.value);
+  const onChange = (e) => {
+    setInput({
+      ...input,
+      // 프로퍼티 키 설정 : input 태그의 name 값을 따라가겠다!
+      [e.target.name] : e.target.value,
+    })
   }
-
-   const onChangeBirth = (e) => {
-    setBirth(e.target.value);
-  }
-
-  const onChangeCountry = (e) => {
-    setCountry(e.target.value);
-  }
-  const onChangeBio = (e) => {
-    setBio(e.target.value);
-  }
-
 
   return (
     <div>
       <div>
         <input 
-          value={name} 
-          onChange={onChangeName} 
+          name="name"
+          value={input.name} 
+          onChange={onChange} 
           placeholder={"이름"} 
         />
+        {input.name}
         </div>
         <div>
           <input
-          value={birth} 
-          type="date" 
-          onChange={onChangeBirth} 
+            name="birth"
+            value={input.birth} 
+            type="date" 
+            onChange={onChange} 
         />
-        {birth}
+        {input.birth}
       </div>
       <div>
-          <select  
-          value={country} 
-          onChange={onChangeCountry} 
+          <select
+            name="country"
+            value={input.country} 
+            onChange={onChange} 
           >
             <option></option>
             <option value="kr">한국</option>
             <option value="usa">미국</option>
             <option value="eu">영국</option>
           </select>
-          {country}
+          {input.country}
       </div>
         <div>
           <textarea
-          value={bio} 
-          onChange={onChangeBio} 
+            name="bio"
+            value={input.bio} 
+            onChange={onChange} 
         />
-        {bio}
+        {input.bio}
       </div>
     </div>
   )
