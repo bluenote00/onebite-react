@@ -3,7 +3,7 @@ import './Header.css'
 function Header() {
   return (
     <div className="Header">
-    <h3>오늘은 🎁</h3>
+    <h2>오늘은 📆</h2>
     <h1>{new Date().toDateString()}</h1>
     </div>
   );
