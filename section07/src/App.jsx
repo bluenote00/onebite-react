@@ -31,7 +31,6 @@ function App() {
   // 3. 언마운트 : 죽음
 
 
-
   // count가 실행될 때마다, 앞에 콜백 함수가 실행되게 된다.
   // useEffect(()=> {
   //   console.log(`count : ${count} / input : ${input}`);
