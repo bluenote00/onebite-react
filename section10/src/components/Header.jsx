@@ -1,4 +1,5 @@
 import './Header.css'
+import { memo } from "react";
 
 function Header() {
   return (
@@ -9,4 +10,7 @@ function Header() {
   );
 }
 
-export default Header
+// props가 바뀌지 않으면 리렌더링 하지 않도록 설정정
+// const mamoizedHeader = memo(Header)
+
+export default memo(Header)
