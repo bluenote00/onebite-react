@@ -10,7 +10,7 @@ function Header() {
   );
 }
 
-// props가 바뀌지 않으면 리렌더링 하지 않도록 설정정
+// props가 바뀌지 않으면 리렌더링 하지 않도록 설정
 // const mamoizedHeader = memo(Header)
 
 export default memo(Header)
