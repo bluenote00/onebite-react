@@ -1,10 +1,10 @@
 import './Editor.css';
 import { useState, useRef, useContext } from "react";
-import { TodoContext } from '../App';
+import { TodoDispatchContext } from '../App';
 
 const Editor = () => {
   // 구조 분해 할당으로 값을 빼온다.
-  const { onCreate } = useContext(TodoContext);
+  const { onCreate } = useContext(TodoDispatchContext);
   const [content, setContent] = useState("");
   const contentRef = useRef();
 

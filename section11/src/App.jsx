@@ -4,7 +4,8 @@ import {
     useRef, 
     useReducer, 
     useCallback,
-    createContext 
+    createContext,
+    useMemo 
   } from 'react'
 import Header from './components/Header'
 import Editor from './components/Editor'
@@ -46,7 +47,10 @@ function reducer(state, action) {
 }
 
 // context 선언
-export const TodoContext = createContext();
+// export const TodoContext = createContext(); 
+
+export const TodoStateContext = createContext();
+export const TodoDispatchContext = createContext();
 
 function App() {
   const [todos, dispatch] = useReducer(reducer, mockData);
@@ -81,18 +85,20 @@ function App() {
     });
   }, [])
 
+  const memoizeDispatch = useMemo(()=>{
+    return { onCreate, onUpdate, onDelete };
+  }, []);
+
   return (
     <div className="App">
-      {/* <Exam /> */}
       <Header />
-
-      {/* 필요한 부분을 context로 감싸기 */}
-      <TodoContext.Provider value={{
-        todos, onCreate, onUpdate, onDelete
-      }}>
-        <Editor />
-        <List />
-      </TodoContext.Provider>
+      <TodoStateContext.Provider value={todos}>
+        <TodoDispatchContext.Provider
+          value={ memoizeDispatch }>
+          <Editor />
+          <List />
+        </TodoDispatchContext.Provider>
+      </TodoStateContext.Provider>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import './TodoItem.css';
 import { memo, useContext } from 'react';
-import { TodoContext } from '../App';
+import { TodoDispatchContext } from '../App';
 
 // useMemo를 이용해 prop이 바뀌지않으면 리렌더링이 안되도록 설정
 const TodoItem = ({
@@ -9,7 +9,7 @@ const TodoItem = ({
     content,
     date,
   }) => {
-    const { onUpdate, onDelete } = useContext(TodoContext);
+    const { onUpdate, onDelete } = useContext(TodoDispatchContext);
 
   const onChangeCheckbox = () => {
     onUpdate(id);

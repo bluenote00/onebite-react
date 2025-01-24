@@ -1,10 +1,10 @@
 import './List.css'
 import TodoItem from './TodoItem'
 import { useState,useMemo,useContext } from "react";
-import { TodoContext } from '../App';
+import { TodoStateContext } from '../App';
 
 const List = () => {
-  const { todos } = useContext(TodoContext);
+  const todos = useContext(TodoStateContext);
   const [search, setSearch] = useState("");
 
   const onChangeSearch = (e) => {
@@ -40,12 +40,7 @@ const List = () => {
   return (
     <div className="List">
       <h3>Todo List 💕</h3>
-      {/* <div>
-       <div>total : {totalCount}</div>
-       <div>done : {doneCount}</div>
-       <div>notDone : {notDoneCount}</div>
-      </div> */}
-
+    
       <input value={search}
         onChange={onChangeSearch}
         placeholder="검색어를 입력하세요" />
