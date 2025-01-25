@@ -26,7 +26,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<New />} />
-        <Route path="/diary" element={<Diary />} />
+
+        {/* 동적 경로 : URL Parameter */}
+        <Route path="/diary/:id" element={<Diary />} />
 
         {/* 와일드 카드 : 스위치문의 default 같은 것 */}
         <Route path="*" element={<NotFound />} />
