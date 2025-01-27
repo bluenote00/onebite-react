@@ -1,46 +1,43 @@
 import './App.css'
+import { useReducer } from 'react'
 import { Routes, Route } from "react-router-dom"
 import Home from './pages/Home'
 import New from './pages/New'
 import Diary from './pages/Diary'
+import Edit from './pages/Edit'
 import NotFound from './pages/NotFound'
-import Button from './components/Button'
-import Header from './components/Header'
 
+const mockData = [
+  {
+    id : 1,
+    createdDate : new Date().getTime(),
+    emotionId : 1,
+    content : "1번 일기 내용"
+  },
+   {
+    id : 2,
+    createdDate : new Date().getTime(),
+    emotionId : 2,
+    content : "2번 일기 내용"
+  },
+]
 
-// 1. "/" : 모든 일기를 조회하는 home
-// 2. "/new" : t새로운 일기를 작성하는 new 페이지
-// 3. "/diary" : 일기를 상세히 조회하는 Diary 페이지
+function reducer(state, action) {
+  return state;
+}
+
 function App() {
+  const [data, dispatch] = useReducer(reducer, mockData);
+
   return (
     <>
-    <Header title={"Header"} 
-      leftChild={<Button text={"Left"} />}
-      rightChild={<Button  text={"Right"} />}
-    />
-
-    <Button text={"123"} 
-      type={"DEFAULT"}
-      onClick={() => {
-      console.log("123번 버튼 클릭!")
-    }} />
-    <Button text={"123"} 
-      type={"POSITIVE"}
-      onClick={() => {
-      console.log("123번 버튼 클릭!")
-    }} />
-      <Button text={"123"} 
-      type={"NEGATIVE"}
-      onClick={() => {
-      console.log("123번 버튼 클릭!")
-    }} />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<New />} />
 
         {/* 동적 경로 : URL Parameter */}
         <Route path="/diary/:id" element={<Diary />} />
+        <Route path="/edit/:id" element={<Edit />} />
 
         {/* 와일드 카드 : 스위치문의 default 같은 것 */}
         <Route path="*" element={<NotFound />} />
