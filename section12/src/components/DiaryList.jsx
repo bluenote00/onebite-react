@@ -4,7 +4,7 @@ import DiaryItem from "./DiaryItem"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"
 
-const DiaryList = ({ data = [] }) => {
+const DiaryList = ({ data }) => {
     const nav = useNavigate();
     const [ sortType, setSortType ] = useState("latest");
 
