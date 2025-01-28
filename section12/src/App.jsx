@@ -29,16 +29,21 @@ const mockData = [
 ]
 
 function reducer(state, action) {
-  switch(action.type) {
-    case "CREATE" : return [action.data, ...state];
-    case "UPDATE" : return state.map((item) => 
-      String(item.id) === String(action.data.id) ? action.data : item
-    );
-    case "DELETE" : return state.filter(
-      (item) => String(item.id) !== String(action.id)
-    );
-
-    default : return state;
+  switch (action.type) {
+    case "CREATE":
+      return [action.data, ...state];
+    case "UPDATE":
+      return state.map((item) =>
+        String(item.id) === String(action.data.id)
+          ? action.data
+          : item
+      );
+    case "DELETE":
+      return state.filter(
+        (item) => String(item.id) !== String(action.id)
+      );
+    default:
+      return state;
   }
 }
 
@@ -64,8 +69,7 @@ function App() {
 
   // 기존 일기 수정
     const onUpdate = (id, createdDate, emotionId, content) => {
-      dispatch(
-        {
+      dispatch({
           type: "UPDATE",
           data : {
             id, 
