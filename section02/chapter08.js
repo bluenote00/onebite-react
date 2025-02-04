@@ -72,3 +72,4 @@ const finded = arr6.find(
 );
 
 console.log(finded);
+
